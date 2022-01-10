@@ -4,16 +4,16 @@ Starter to develop and deploy APIs via Google Cloud Functions
 
 ## Get started
 
-This repo contains a single API called `myAPI`. To change its name, edit the name of the exported function in `index.js` and the `--target` parameter in the npm script `start`.
-
 ```bash
 npm install
 npm run watch
 ```
 
-Go to `http://localhost:8080/` to interact with your API. The site will be reloaded whenever `*.js` files change (specified in `package.json` under `watch`).
+Go to `http://localhost:8080/` to interact with your API. Your code lives in `index.js`. The site will be reloaded whenever `*.js` files change (specified in `package.json` under `watch`).
 
 ## Deploy (via Google Cloud Functions)
+
+**Note:** This repo contains a single API called `myAPI` (defined in `index.js`). To change its name, edit the name of the exported function in `index.js` and the `--target` parameter in the npm script `start`.
 
 Make sure to connect to the appropriate project:
 
