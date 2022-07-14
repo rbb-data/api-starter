@@ -2,9 +2,15 @@
 
 Starter to develop and deploy APIs via Google Cloud Functions
 
-## Get started
+## Run locally
+
+Make sure to specify a `FUNCTION_NAME` in `.env.cloud`.
 
 ```bash
+# load environment variables from .env and .env.cloud
+export $(cat .env .env.cloud | xargs)
+
+# install and launch
 npm install
 npm run watch
 ```
@@ -13,12 +19,10 @@ Go to `http://localhost:8080/` to interact with your API. Your code lives in `in
 
 ## Deploy (via Google Cloud Functions)
 
-**Note:** This repo contains a single API called `myAPI` (defined in `index.js`). To change its name, edit the name of the exported function in `index.js` and the `--target` parameter in the npm script `start`.
-
-Make sure to connect to the appropriate project:
+Make sure to specify a `CLOUD_PROJECT` in `.env` and connect to it:
 
 ```bash
-gcloud config set project <PROJECT-ID>
+gcloud config set project $CLOUD_PROJECT
 ```
 
 Enable cloud functions for the current project:
@@ -33,10 +37,12 @@ Set the region to "Frankfurt":
 gcloud config set functions/region europe-west3
 ```
 
-Deploy:
-
-You will need to specify the runtime you are using. Available run times are listed at: https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime. To find the current node version you're running, type `node --version` in a terminal.
+To deploy, run:
 
 ```bash
-gcloud functions deploy myAPI --runtime=nodejs16 --trigger-http --allow-unauthenticated
+npm run deploy
 ```
+
+> **Note**
+>
+> Environment variables defined in `env.cloud` need to be known by the cloud environment. Go to your deployed function in the cloud, click "Edit" and add all environment variables in `.env.cloud`. You'll only need to do this once.

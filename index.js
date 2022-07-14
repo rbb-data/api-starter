@@ -1,3 +1,5 @@
+const functions = require('@google-cloud/functions-framework');
+
 /**
  * HTTP Cloud Function.
  *
@@ -6,7 +8,7 @@
  * @param {Object} res Cloud Function response context.
  *                     More info: https://expressjs.com/en/api.html#res
  */
-exports.myAPI = (req, res) => {
+functions.http(process.env.FUNCTION_NAME, (req, res) => {
   // Handle CORS
   res.set('Access-Control-Allow-Origin', '*');
 
@@ -19,4 +21,4 @@ exports.myAPI = (req, res) => {
   } else {
     res.send('Hello world');
   }
-};
+});
