@@ -2,9 +2,11 @@
 
 Starter to develop and deploy APIs via Google Cloud Functions
 
-## Run locally
+## Development
 
-Make sure to specify a `FUNCTION_NAME` in `.env.cloud`.
+Make sure to specify a `CLOUD_PROJECT` in `.env` and a `FUNCTION_NAME` in `.env.cloud`. `CLOUD_PROJECT` should be the name of an existing Google Cloud Project; `FUNCTION_NAME` can be arbitrarily chosen.
+
+### Run locally
 
 ```bash
 # load environment variables from .env and .env.cloud
@@ -17,9 +19,9 @@ npm run watch
 
 Go to `http://localhost:8080/` to interact with your API. Your code lives in `index.js`. The site will be reloaded whenever `*.js` files change (specified in `package.json` under `watch`).
 
-## Deploy (via Google Cloud Functions)
+### Deploy (via Google Cloud Functions)
 
-Make sure to specify a `CLOUD_PROJECT` in `.env` and connect to it:
+Connect to your Cloud project:
 
 ```bash
 gcloud config set project $CLOUD_PROJECT
@@ -45,4 +47,4 @@ npm run deploy
 
 > **Note**
 >
-> Environment variables defined in `env.cloud` need to be known by the cloud environment. Go to your deployed function in the cloud, click "Edit" and add all environment variables in `.env.cloud`. You'll only need to do this once.
+> To make the environment variables defined in `env.cloud` to be known to the cloud environment, go to your deployed function in the cloud, click "Edit" and manually add all environment variables in `.env.cloud`. You'll only need to do this once.
