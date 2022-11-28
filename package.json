@@ -4,10 +4,11 @@
   "description": "Starter to develop and deploy APIs via Google cloud functions",
   "main": "index.js",
   "scripts": {
+    "preinstall": "scripts/setup.sh",
     "start": "functions-framework --target=$FUNCTION_NAME",
     "watch": "npm-watch start",
     "predeploy": "gcloud config set project $CLOUD_PROJECT",
-    "deploy": "gcloud functions deploy $FUNCTION_NAME --runtime=nodejs16 --trigger-http --allow-unauthenticated",
+    "deploy": "gcloud functions deploy $FUNCTION_NAME --runtime=nodejs18 --trigger-http --allow-unauthenticated",
     "format": "prettier --ignore-path .gitignore --write ."
   },
   "watch": {
